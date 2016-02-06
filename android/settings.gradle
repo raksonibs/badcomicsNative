@@ -1,0 +1,3 @@
+rootProject.name = 'badcomicsNative'
+
+include ':app'
