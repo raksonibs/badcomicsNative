@@ -1,52 +1,77 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-'use strict';
-import React, {
+var React = require('react-native');
+var {
   AppRegistry,
-  Component,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+  TextInput,
+  Image,
+  ScrollView,
+  Navigator,
+  NavigatorIOS,
+  TouchableHighlight,
+  Component
+} = React;
+
+var Dimensions = require('Dimensions');
+
+var REQUEST_URL = 'http://localhost:3000/api/v1/comics';
+let things = []
+
+var MainApp            = require('./MainApp');
+
+var styles = StyleSheet.create({
+  app: {
+    flex: 1,
+    backgroundColor: '#85b16a'
+  }
+});
+
 
 class badcomicsNative extends Component {
+  constructor(props) {
+    super(props);    
+    component = this;
+    this.state = {
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <NavigatorIOS
+        barTintColor='#000'
+        titleTextColor='#fff'
+        tintColor='#fff'
+        style={styles.container}
+        initialRoute={{
+          title: 'Bad Comics',
+          component: MainApp
+        }}/>     
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+var {width, height} = Dimensions.get('window');
+
+var styles = React.StyleSheet.create({
+  text: {
+    color: 'white',
+    backgroundColor: 'white',
+    fontSize: 30,
+    margin: 80
+  },
+  footer: {
+    backgroundColor: '#000',
+    flex: 1,
+    alignItems: 'stretch'
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    alignItems: 'stretch',
+    backgroundColor: '#BA55D3',
+  }
+})
 
 AppRegistry.registerComponent('badcomicsNative', () => badcomicsNative);
