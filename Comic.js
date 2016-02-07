@@ -1,5 +1,4 @@
 var React = require('react-native');
-import EventShow from './EventShow.js'
 
 var {
   Platform,
@@ -51,30 +50,30 @@ var styles = StyleSheet.create({
 
 let screenHeight = Dimensions.get('window').height;
 
-class Event extends React.Component {
+class Comic extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    var event = this.props.event;
+    var comic = this.props.comic;
     
     return (
       <ScrollView style={styles.container}>
         <Image style={styles.image} 
-            source={{uri: event.image}} />
+            source={{uri: comic.image}} />
         <View style={styles.heading}>
-          <Text style={styles.price}>{event.name}</Text>
-          <Text style={styles.title}>{event.price}</Text>
-          <Text style={styles.description}>{event.location}</Text>
-          <Text style={styles.title}>{event.dayOn}</Text>
-          <Text style={styles.title}>{event.url}</Text>
+          <Text style={styles.price}>{comic.name}</Text>
+          <Text style={styles.title}>{comic.price}</Text>
+          <Text style={styles.description}>{comic.location}</Text>
+          <Text style={styles.title}>{comic.dayOn}</Text>
+          <Text style={styles.title}>{comic.url}</Text>
           <View style={styles.separator}/>
         </View>
-        <Text style={styles.description}>{event.desc}</Text>
+        <Text style={styles.description}>{comic.desc}</Text>
       </ScrollView>
     );
   }
 }
 
-module.exports = Event;
+module.exports = Comic;

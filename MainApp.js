@@ -12,7 +12,8 @@ var {
   Component
 } = React;
 
-var REQUEST_URL = 'http://localhost:3000/api/v1/today';
+var REQUEST_URL = 'http://localhost:3000/api/v1/comics';
+import ComicList from './ComicList'
 
 class MainApp extends Component {
   constructor(props) {    
@@ -24,11 +25,10 @@ class MainApp extends Component {
   }
 
   componentDidMount() {
-    this._executeQuery(); 
+    // this._executeQuery(); 
   }
 
   _handleResponse(response) {
-    debugger
     if (response.comics.length > 0) {
       this.props.navigator.push({
         title: 'comics',

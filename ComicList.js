@@ -1,5 +1,5 @@
 var React = require('react-native');
-import EventShow from './Event'
+
 var {
   ScrollView,
   StyleSheet,
@@ -12,11 +12,7 @@ var {
   Text
 } = React;
 
-var REQUEST_URL = 'http://localhost:3000/api/v1/today';
-
-var Footer = require("./Footer");
-
-let events = [];
+let comics = [];
 let component;
 
 var styles = StyleSheet.create({
@@ -52,24 +48,24 @@ var styles = StyleSheet.create({
   }
 });
 
-class EventList extends React.Component {
+class ComicList extends React.Component {
     constructor(props) {
       super(props);
       component = this;
       var dataSource = new ListView.DataSource(
       {rowHasChanged: (r1, r2) => r1.id !== r2.id});
       this.state = {
-        dataSource: dataSource.cloneWithRows(this.props.events)
+        dataSource: dataSource.cloneWithRows(this.props.comics)
       };
     }
 
     rowPressed(eventId) {
-      var event = this.props.events.filter(event => event.uuid === eventId)[0];
+      var comic = this.props.comics.filter(comic => comic.uuid === comicId)[0];
       
       this.props.navigator.push({
-        title: "Event",
-        component: EventShow,
-        passProps: {event: event}
+        title: "comic",
+        component: ComicShow,
+        passProps: {comic: comic}
       });
     }
 
@@ -107,4 +103,4 @@ class EventList extends React.Component {
 
 }
 
-module.exports = EventList;
+module.exports = ComicList;
