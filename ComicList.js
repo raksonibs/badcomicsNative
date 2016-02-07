@@ -20,7 +20,9 @@ var styles = StyleSheet.create({
   thumb: {
     width: 80,
     height: 80,
-    marginRight: 10
+    marginRight: 10,
+    borderColor: '#dddddd',
+    borderWidth: 2
   },
   textContainer: {
     flex: 1
@@ -32,20 +34,20 @@ var styles = StyleSheet.create({
   price: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: 'white'
+    color: '#7e7e7e'
   },
   title: {
     fontSize: 20,
-    color: '#white'
+    color: '#7e7e7e'
   },
   rowContainer: {
-    flexDirection: 'row',
-    padding: 10,
-    backgroundColor: '#BA55D3',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    backgroundColor: '#f6f6f6',
   },
   fullView: {
-    flex: 1,
-    backgroundColor: '#BA55D3',
+    backgroundColor: '#f6f6f6',
+    flexDirection: 'column'
   }
 });
 
@@ -77,14 +79,9 @@ class ComicList extends React.Component {
           underlayColor='#dddddd'>
           <View>
             <View style={styles.rowContainer}>
-              <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />
-              <View style={styles.textContainer}>
-                <Text style={styles.price}>{rowData.title}</Text>
-                <Text style={styles.title} 
-                      numberOfLines={1}>{rowData.created_at}</Text>               
-              </View>
+              <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />              
             </View>
-            <View style={styles.separator}/>
+            
           </View>
         </TouchableHighlight>
     );
@@ -95,6 +92,7 @@ class ComicList extends React.Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
+        horizontal={true}
         style={styles.fullView}
         />
     );

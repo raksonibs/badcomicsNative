@@ -17,10 +17,10 @@ var styles = StyleSheet.create({
   container: {
     marginTop: 65,
     flex: 1,
-    backgroundColor: '#BA55D3',
+    backgroundColor: '#f6f6f6',
   },
   heading: {
-    backgroundColor: '#BA55D3',
+    backgroundColor: '#f6f6f6',
   },
   separator: {
     height: 1,
@@ -34,17 +34,17 @@ var styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     margin: 5,
-    color: 'white'
+    color: '#7e7e7e'
   },
   title: {
     fontSize: 20,
     margin: 5,
-    color: 'white'
+    color: '#7e7e7e'
   },
   description: {
     fontSize: 18,
     margin: 5,
-    color: 'white'
+    color: '#7e7e7e'
   }
 });
 

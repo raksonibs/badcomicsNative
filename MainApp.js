@@ -1,6 +1,7 @@
 'use strict';
  
 var React = require('react-native');
+
 var {
   StyleSheet,
   Text,
@@ -87,21 +88,21 @@ var styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 18,
     textAlign: 'center',
-    color: 'white'
+    color: '#7e7e7e'
   },
   text: {
-    color: 'white'
+    color: '#7e7e7e'
   },
   header: {
     fontSize: 25,
     margin: 5,
-    color: 'white'
+    color: '#7e7e7e'
   },
   container: {
     padding: 30,
     marginTop: 65,
     alignItems: 'center',
-    backgroundColor: '#BA55D3',
+    backgroundColor: '#f6f6f6',
     flex: 1
   },
   flowRight: {
@@ -115,7 +116,7 @@ var styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: 'white',
+    color: '#7e7e7e',
     alignSelf: 'center'
   },
   button: {
