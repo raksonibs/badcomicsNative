@@ -1,4 +1,5 @@
 var React = require('react-native');
+import ComicShow from './Comic'
 
 var {
   ScrollView,
@@ -59,8 +60,8 @@ class ComicList extends React.Component {
       };
     }
 
-    rowPressed(eventId) {
-      var comic = this.props.comics.filter(comic => comic.uuid === comicId)[0];
+    rowPressed(comicId) {
+      var comic = this.props.comics.filter(comic => comic.ruby_id === comicId)[0];
       
       this.props.navigator.push({
         title: "comic",
@@ -72,17 +73,15 @@ class ComicList extends React.Component {
     renderRow(rowData, sectionID, rowID) {
 
       return (
-        <TouchableHighlight onPress={() => this.rowPressed(rowData.uuid)}
+        <TouchableHighlight onPress={() => this.rowPressed(rowData.ruby_id)}
           underlayColor='#dddddd'>
           <View>
             <View style={styles.rowContainer}>
-              <Image style={styles.thumb} source={{ uri: rowData.image }} />
+              <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />
               <View style={styles.textContainer}>
-                <Text style={styles.price}>{rowData.name}</Text>
+                <Text style={styles.price}>{rowData.title}</Text>
                 <Text style={styles.title} 
-                      numberOfLines={1}>{rowData.location}</Text>
-                <Text style={styles.title} 
-                      numberOfLines={1}>{rowData.price}</Text>
+                      numberOfLines={1}>{rowData.created_at}</Text>               
               </View>
             </View>
             <View style={styles.separator}/>

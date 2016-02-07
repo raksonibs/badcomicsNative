@@ -61,16 +61,12 @@ class Comic extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <Image style={styles.image} 
-            source={{uri: comic.image}} />
+            source={{uri: comic.comic_url}} />
         <View style={styles.heading}>
-          <Text style={styles.price}>{comic.name}</Text>
-          <Text style={styles.title}>{comic.price}</Text>
-          <Text style={styles.description}>{comic.location}</Text>
-          <Text style={styles.title}>{comic.dayOn}</Text>
-          <Text style={styles.title}>{comic.url}</Text>
+          <Text style={styles.price}>{comic.title}</Text>
+          <Text style={styles.title}>{comic.created_at}</Text>
           <View style={styles.separator}/>
         </View>
-        <Text style={styles.description}>{comic.desc}</Text>
       </ScrollView>
     );
   }

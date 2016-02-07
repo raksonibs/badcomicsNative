@@ -25,7 +25,7 @@ class MainApp extends Component {
   }
 
   componentDidMount() {
-    // this._executeQuery(); 
+    this._executeQuery(); 
   }
 
   _handleResponse(response) {
