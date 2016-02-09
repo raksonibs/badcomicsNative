@@ -83,8 +83,7 @@ class ComicList extends React.Component {
             <View style={styles.rowContainer}>
               <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />
             </View>
-            <Text style={styles.date}>{rowData.created_at}</Text> 
-            
+            <Text style={styles.date}>{rowData.created_at}</Text>             
           </View>
         </TouchableHighlight>
     );

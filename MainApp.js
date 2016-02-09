@@ -16,7 +16,9 @@ var {
 var REQUEST_URL = 'http://localhost:3000/api/v1/comics';
 import ComicList from './ComicList'
 import ComicListGrid from './ComicListGrid'
+import Header from './Header'
 let comics = []
+
 class MainApp extends Component {
   constructor(props) {    
     super(props);
@@ -38,7 +40,7 @@ class MainApp extends Component {
       this.props.navigator.push({
         title: 'comics',
         component: ComicList,
-        passProps: {comics: response.comics}
+        passProps: {comics: response.comics, navigator: navigator}
       });
     } else {
       this.setState({ message: 'Not recognized; please try again.'});
@@ -72,9 +74,10 @@ class MainApp extends Component {
       ( <ActivityIndicatorIOS
           hidden='true'
           size='large'/> ) :
-      ( <ComicListGrid comics={this.state.comics} /> );
+      ( <ComicListGrid comics={this.state.comics} navigator={this.props.navigator} /> );
     return (
       <View style={styles.container}>
+        <Header />
         {spinner}
         <Text style={styles.description}>{this.state.message}</Text>
       </View>
