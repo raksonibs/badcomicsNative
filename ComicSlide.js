@@ -1,7 +1,6 @@
 var React = require('react-native');
 var Swiper = require('react-native-swiper')
 import ComicShow from './Comic'
-import ComicSlide from './ComicSlide'
 
 var {
   ScrollView,
@@ -78,50 +77,24 @@ var styles = StyleSheet.create({
   }
 });
 
-class ComicList extends React.Component {
-    constructor(props) {
-      super(props);
-      component = this;
-      this.state = {
-        comics: this.props.comics
-      }
+class ComicSlide extends React.Component {
+  constructor(props) {
+    super(props);
+    component = this;
+    this.state = {
+      comics: this.props.comics
     }
-
-    comicPressed(comicId) {
-      var comic = this.props.comics.filter(comic => comic.ruby_id === comicId)[0];
-      
-      this.props.navigator.push({
-        title: "comic",
-        component: ComicShow,
-        passProps: {comic: comic}
-      });
-    }
-
-    renderComic(comicData) {
-
-      return (
-        <TouchableHighlight onPress={() => this.comicPressed(comicData.ruby_id)}
-          underlayColor='#dddddd'>
-          <View style={styles.slide1}>
-            <Image style={styles.thumb} source={{ uri: comicData.comic_url }} />
-            <Text style={styles.text}>{comicData.title}</Text>
-          </View>
-        </TouchableHighlight>
-    );
   }
 
   render() {
-    return (
-      <Swiper style={styles.wrapper} showsButtons={true}>
-        {  
-          this.props.comics.map(function(comic, index) { 
-            return <ComicSlide key={comic.ruby_id} comic={comic} color={index} />
-          })
-        }
-      </Swiper>
+    return (    
+      <View style={styles.slide1}>              
+        <Image style={styles.thumb} source={{ uri: this.props.comic.comic_url }} />
+        <Text style={styles.text}>{this.props.comic.title}</Text>              
+      </View>
     );
   }
 
 }
 
-module.exports = ComicList;
+module.exports = ComicSlide;
