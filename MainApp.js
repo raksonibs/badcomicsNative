@@ -15,13 +15,14 @@ var {
 
 var REQUEST_URL = 'http://localhost:3000/api/v1/comics';
 import ComicList from './ComicList'
-
+let comics = []
 class MainApp extends Component {
   constructor(props) {    
     super(props);
     this.state = {
       isLoading: true,
-      message: ''
+      message: '',
+      comics: []
     }
   }
 
@@ -31,6 +32,8 @@ class MainApp extends Component {
 
   _handleResponse(response) {
     if (response.comics.length > 0) {
+      comics = response.comics;
+      this.setState({comics: response.comics})
       this.props.navigator.push({
         title: 'comics',
         component: ComicList,
@@ -68,12 +71,7 @@ class MainApp extends Component {
       ( <ActivityIndicatorIOS
           hidden='true'
           size='large'/> ) :
-      ( <TouchableHighlight style={styles.button}
-          underlayColor='#99d9f4'
-          onPress={this.onEventPressed.bind(this)}
-          >
-          <Text style={styles.buttonText}>Explore All</Text>
-        </TouchableHighlight> );
+      ( <ComicListGrid comics={this.state.comics} /> );
     return (
       <View style={styles.container}>
         {spinner}
