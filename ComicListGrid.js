@@ -18,14 +18,17 @@ let component;
 
 var styles = StyleSheet.create({
   thumb: {
-    width: 80,
-    height: 80,
-    marginRight: 10,
+    width: 300,
+    height: 300,
     borderColor: '#dddddd',
     borderWidth: 2
   },
   textContainer: {
     flex: 1
+  },
+  date: {
+    paddingLeft: 75,
+    paddingBottom: 10
   },
   separator: {
     height: 1,
@@ -41,13 +44,12 @@ var styles = StyleSheet.create({
     color: '#7e7e7e'
   },
   rowContainer: {
-    alignItems: 'flex-start',
-    flexWrap: 'wrap',
+    flexDirection: 'row',
     backgroundColor: '#f6f6f6',
   },
   fullView: {
+    flex: 1,
     backgroundColor: '#f6f6f6',
-    flexDirection: 'column'
   }
 });
 
@@ -79,8 +81,9 @@ class ComicList extends React.Component {
           underlayColor='#dddddd'>
           <View>
             <View style={styles.rowContainer}>
-              <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />              
+              <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />
             </View>
+            <Text style={styles.date}>{rowData.created_at}</Text> 
             
           </View>
         </TouchableHighlight>
@@ -92,9 +95,8 @@ class ComicList extends React.Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
-        horizontal={true}
         style={styles.fullView}
-        />
+      />
     );
   }
 

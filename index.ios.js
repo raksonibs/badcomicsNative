@@ -40,9 +40,9 @@ class badcomicsNative extends Component {
     return (
       <View style={styles.container}>
         <NavigatorIOS
-        barTintColor='#000'
-        titleTextColor='#fff'
-        tintColor='#fff'
+        barTintColor='#FFFF00'
+        titleTextColor='#000'
+        tintColor='#000'
         style={styles.container}
         initialRoute={{
           title: 'Bad Comics',
