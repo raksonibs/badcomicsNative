@@ -15,6 +15,7 @@ var {
 
 var REQUEST_URL = 'http://localhost:3000/api/v1/comics';
 import ComicList from './ComicList'
+import ComicListGrid from './ComicListGrid'
 let comics = []
 class MainApp extends Component {
   constructor(props) {    

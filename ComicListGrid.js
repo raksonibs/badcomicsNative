@@ -1,5 +1,4 @@
 var React = require('react-native');
-var Swiper = require('react-native-swiper')
 import ComicShow from './Comic'
 
 var {
@@ -18,31 +17,6 @@ let comics = [];
 let component;
 
 var styles = StyleSheet.create({
-  wrapper: {
-  },
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
   thumb: {
     width: 80,
     height: 80,
@@ -81,12 +55,14 @@ class ComicList extends React.Component {
     constructor(props) {
       super(props);
       component = this;
+      var dataSource = new ListView.DataSource(
+      {rowHasChanged: (r1, r2) => r1.id !== r2.id});
       this.state = {
-        comics: this.props.comics
-      }
+        dataSource: dataSource.cloneWithRows(this.props.comics)
+      };
     }
 
-    comicPressed(comicId) {
+    rowPressed(comicId) {
       var comic = this.props.comics.filter(comic => comic.ruby_id === comicId)[0];
       
       this.props.navigator.push({
@@ -96,14 +72,16 @@ class ComicList extends React.Component {
       });
     }
 
-    renderComic(comicData) {
+    renderRow(rowData, sectionID, rowID) {
 
       return (
-        <TouchableHighlight onPress={() => this.comicPressed(comicData.ruby_id)}
+        <TouchableHighlight onPress={() => this.rowPressed(rowData.ruby_id)}
           underlayColor='#dddddd'>
-          <View style={styles.slide1}>
-            <Image style={styles.thumb} source={{ uri: comicData.comic_url }} />
-            <Text style={styles.text}>{comicData.title}</Text>
+          <View>
+            <View style={styles.rowContainer}>
+              <Image style={styles.thumb} source={{ uri: rowData.comic_url }} />              
+            </View>
+            
           </View>
         </TouchableHighlight>
     );
@@ -111,18 +89,12 @@ class ComicList extends React.Component {
 
   render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={true}> 
-        { 
-          this.props.comics.map(function(comic, index) { 
-            <View style={styles.slide2}>
-              <TouchableHighlight onPress={() => this.comicPressed(comic.ruby_id)}>
-                  <Image style={styles.thumb} source={{ uri: comic.comic_url }} />
-                  <Text style={styles.text}>test</Text>
-              </TouchableHighlight>
-            </View>
-          })
-        }
-      </Swiper>
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this.renderRow.bind(this)}
+        horizontal={true}
+        style={styles.fullView}
+        />
     );
   }
 
