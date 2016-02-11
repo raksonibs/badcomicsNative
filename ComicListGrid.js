@@ -1,6 +1,7 @@
 var React = require('react-native');
 import ComicShow from './Comic'
 import ComicSlide from './ComicSlide'
+import ComicList from './ComicList'
 
 var {
   ScrollView,
@@ -54,7 +55,7 @@ var styles = StyleSheet.create({
   }
 });
 
-class ComicList extends React.Component {
+class ComicListGrid extends React.Component {
     constructor(props) {
       super(props);
       component = this;
@@ -65,13 +66,31 @@ class ComicList extends React.Component {
       };
     }
 
+    reorder(index, comics) {
+      let temp;
+      temp = comics[0];
+      comics[0] = comics[index];
+      comics[index] = temp;
+      return comics;
+    }
+
     rowPressed(comicId) {
-      var comic = this.props.comics.filter(comic => comic.ruby_id === comicId)[0];
-      
+      var comicSelected = this.props.comics.filter(comic => comic.ruby_id === comicId)[0];
+      this.props.comics.map((comic, index) => {
+        if (comic.ruby_id === comicSelected.ruby_id) {
+          count = index 
+        }
+      })
+
+      let temp;
+      temp = this.props.comics[0];
+      this.props.comics[0] = this.props.comics[count];
+      this.props.comics[count] = temp;
+
       this.props.navigator.push({
-        title: "comic",
-        component: ComicSlide,
-        passProps: {comic: comic, count: count, comics: this.props.comic}
+        title: "Comic",
+        component: ComicList,
+        passProps: {comic: comicSelected, count: count, comics: this.props.comics}
       });
     }
 
@@ -102,4 +121,4 @@ class ComicList extends React.Component {
 
 }
 
-module.exports = ComicList;
+module.exports = ComicListGrid;

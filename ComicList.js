@@ -114,7 +114,7 @@ class ComicList extends React.Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         {  
-          this.props.comics.map(function(comic, index) { 
+          this.props.comics.map(function(comic, index) {          
             return <ComicSlide key={comic.ruby_id} comic={comic} color={index} />
           })
         }
