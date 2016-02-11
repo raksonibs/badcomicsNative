@@ -25,9 +25,17 @@ var styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
+  image: {
+    width: 217,
+    height: 138
+  },
+  flowRight: {
+    alignItems: 'center',
+    alignSelf: 'stretch'
+  },
 });
 
-class ComicSlide extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
     component = this;
@@ -35,8 +43,8 @@ class ComicSlide extends React.Component {
 
   render() {
     return (    
-      <View style={styles.wrapper}>              
-        <Text>badcomics logo</Text>
+      <View style={styles.flowRight}>              
+        <Image source={require('image!logo')} style={styles.image}/>
         <Text style={styles.text}>General info about Bad Comics</Text>              
       </View>
     );
@@ -44,4 +52,4 @@ class ComicSlide extends React.Component {
 
 }
 
-module.exports = ComicSlide;
+module.exports = Header;
