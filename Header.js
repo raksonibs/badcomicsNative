@@ -26,8 +26,8 @@ var styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   image: {
-    width: 217,
-    height: 138
+    width: 50,
+    height: 50
   },
   flowRight: {
     alignItems: 'center',
@@ -44,8 +44,7 @@ class Header extends React.Component {
   render() {
     return (    
       <View style={styles.flowRight}>              
-        <Image source={require('image!logo')} style={styles.image}/>
-        <Text style={styles.text}>General info about Bad Comics</Text>              
+        <Image source={require('image!logo')} style={styles.image}/>                    
       </View>
     );
   }
