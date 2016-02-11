@@ -82,9 +82,7 @@ class ComicSlide extends React.Component {
     super(props);
     component = this;
     let count = 0;
-    count = this.props.comic.map((comic, index) => {
-      return count if comic.ruby_id === this.props.comic.ruby_id;
-    })
+    
     this.state = {
       comics: this.props.comics
     }

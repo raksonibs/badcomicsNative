@@ -67,9 +67,7 @@ class ComicList extends React.Component {
 
     rowPressed(comicId) {
       var comic = this.props.comics.filter(comic => comic.ruby_id === comicId)[0];
-      var count = this.props.comic.map((comic, index) => {
-        return count if comic.ruby_id === comicId;
-      })
+      
       this.props.navigator.push({
         title: "comic",
         component: ComicSlide,
